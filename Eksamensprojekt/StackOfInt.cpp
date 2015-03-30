@@ -1,7 +1,7 @@
 #include "StackOfInt.h"
 
 
-StackOfInt::StackOfInt() : arr{}, topIndex{ 0 }
+StackOfInt::StackOfInt() : arr{}, topIndex{ -1 }
 {
 
 }
@@ -18,7 +18,7 @@ int StackOfInt::Top()
 
 bool StackOfInt::StackEmpty()
 {
-	if (topIndex == 0)
+	if (topIndex == -1)
 		return true;
 	else return false;
 }
