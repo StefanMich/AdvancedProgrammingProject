@@ -5,6 +5,7 @@
 
 #include "StackOfInt.h"
 #include "StackTemplate.h"
+#include "StackTemplateValueArgument.h"
 #include <string>
 #include <iostream>
 
@@ -16,8 +17,26 @@ void StackTemplateTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	StackOfIntTest();
-	StackTemplateTest();
+	StackTemplateValueArgument<int, 3> s = StackTemplateValueArgument<int, 3>();
+	s.Push(5);
+	s.Push(4);
+	s.Push(3);
+
+	std::cout << s.Pop() << "\n";
+	std::cout << s.Pop() << "\n";
+	std::cout << s.Pop() << "\n";
+
+	int k;
+	std::cin >> k;
+
+	StackTemplateValueArgument<int, 2> t = StackTemplateValueArgument<int, 2>();
+	t.Push(5);
+	t.Push(4);
+	t.Push(3);
+
+	std::cout << t.Pop() << "\n";
+	std::cout << t.Pop() << "\n";
+	std::cout << t.Pop() << "\n";
 
 	return 0;
 }
