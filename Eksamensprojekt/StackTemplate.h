@@ -19,7 +19,7 @@ private:
 
 
 template<typename T>
-StackTemplate<T>::StackTemplate() : arr{}, topIndex{ -1}
+StackTemplate<T>::StackTemplate() : topIndex{ -1}
 {
 }
 
