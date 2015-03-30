@@ -1,5 +1,5 @@
 #pragma once
-template<typename T,int entries>
+template<typename T, int entries>
 class StackTemplateValueArgument
 {
 public:
@@ -13,47 +13,52 @@ public:
 	T Top();
 
 private:
-	T arr[10];
+	T* arr;
 	int topIndex;
 };
 
 
-template<typename T>
-StackTemplateValueArgument<T>::StackTemplateValueArgument() : arr{}, topIndex{ -1 }
+template<typename T, int entries>
+StackTemplateValueArgument<T, entries>::StackTemplateValueArgument() : topIndex{ -1 }
 {
+	arr = new T[entries];
 }
 
-template<typename T>
-StackTemplateValueArgument<T>::~StackTemplateValueArgument()
+template<typename T, int entries>
+StackTemplateValueArgument<T, entries>::~StackTemplateValueArgument()
 {
+	delete arr;
 }
 
-template<typename T>
-T StackTemplateValueArgument<T>::Top()
+template<typename T, int entries>
+T StackTemplateValueArgument<T, entries>::Top()
 {
 	return arr[topIndex];
 }
 
-template<typename T>
-bool StackTemplateValueArgument<T>::StackEmpty()
+template<typename T, int entries>
+bool StackTemplateValueArgument<T, entries>::StackEmpty()
 {
 	if (topIndex == -1)
 		return true;
 	else return false;
 }
 
-template<typename T>
-void StackTemplateValueArgument<T>::Push(T i)
+template<typename T, int entries>
+void StackTemplateValueArgument<T, entries>::Push(T i)
 {
 	topIndex++;
-	arr[topIndex] = i;
+
+	if (topIndex >= entries)
+		throw std::out_of_range{ "overflow" };
+	else arr[topIndex] = i;
 }
 
-template<typename T>
-T StackTemplateValueArgument<T>::Pop()
+template<typename T, int entries>
+T StackTemplateValueArgument<T, entries>::Pop()
 {
 	if (StackEmpty())
-		throw "underflow";
+		throw std::out_of_range{ "underflow" };
 	else
 	{
 		topIndex--;
