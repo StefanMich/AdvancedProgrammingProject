@@ -57,6 +57,8 @@ void StackTemplateValueArgument<T, entries>::Push(T i)
 template<typename T, int entries>
 T StackTemplateValueArgument<T, entries>::Pop()
 {
+
+	
 	if (StackEmpty())
 		throw std::out_of_range{ "underflow" };
 	else

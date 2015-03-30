@@ -33,6 +33,9 @@
     <ClInclude Include="StackTemplateValueArgument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StackTemplateBoolSpecialization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

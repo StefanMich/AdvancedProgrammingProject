@@ -6,18 +6,21 @@
 #include "StackOfInt.h"
 #include "StackTemplate.h"
 #include "StackTemplateValueArgument.h"
+#include "StackTemplateBoolSpecialization.h"
 #include <string>
 #include <iostream>
 
 
 using string = std::string;
 
+
 void StackOfIntTest();
 void StackTemplateTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	
+
+
 
 	return 0;
 }
@@ -76,4 +79,27 @@ void StackTemplateValueArgumentTest()
 	std::cout << t.Pop() << "\n";
 	std::cout << t.Pop() << "\n";
 	std::cout << t.Pop() << "\n";
+}
+
+void StackTemplateBoolSpecializationTest()
+{
+	StackTemplateBoolSpecialization<int> st = StackTemplateBoolSpecialization<int>();
+	st.Push(1);
+	st.Push(1);
+	st.Push(2);
+
+	std::cout << st.Pop() << "\n";
+	std::cout << st.Pop() << "\n";
+	std::cout << st.Pop() << "\n";
+
+	StackTemplateBoolSpecialization<bool> s = StackTemplateBoolSpecialization<bool>();
+
+	for (int i = 0; i < 8; i++)
+	{
+		s.Push(false);
+		s.Push(true);
+	}
+
+	for (int j = 0; j < 16; j++)
+		std::cout << "Popping: " << s.Pop() << "\n";
 }

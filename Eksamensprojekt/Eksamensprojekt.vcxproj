@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClInclude Include="StackOfInt.h" />
     <ClInclude Include="StackTemplate.h" />
+    <ClInclude Include="StackTemplateBoolSpecialization.h" />
     <ClInclude Include="StackTemplateValueArgument.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
