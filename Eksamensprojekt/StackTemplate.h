@@ -53,7 +53,7 @@ template<typename T>
 T StackTemplate<T>::Pop()
 {
 	if (StackEmpty())
-		throw "underflow";
+		throw std::out_of_range{ "underflow" };
 	else
 	{
 		topIndex--;

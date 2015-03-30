@@ -1,5 +1,5 @@
 #include "StackOfInt.h"
-
+#include <stdexcept>
 
 StackOfInt::StackOfInt() : arr{}, topIndex{ -1 }
 {
@@ -32,7 +32,7 @@ void StackOfInt::Push(int i)
 int StackOfInt::Pop()
 {
 	if (StackEmpty())
-		throw "underflow";
+		throw std::out_of_range{"underflow"};
 	else
 	{
 		topIndex--;
