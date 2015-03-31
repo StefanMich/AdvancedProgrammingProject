@@ -1,18 +1,30 @@
 #pragma once
 //A node in a binary tree
-class Node;
 
+template<typename T>
 class Node
 {
 public:
-	Node(int k);
+	Node(T k);
 	~Node();
 
 	Node* left;
 	Node* right;
 	Node* parent;
-	int key;
+	T key;
 
 
 };
+
+template<typename T>
+Node<T>::Node(T k)
+{
+	key = k;
+}
+
+template<typename T>
+Node<T>::~Node()
+{
+	
+}
 

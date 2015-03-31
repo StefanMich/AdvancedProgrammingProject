@@ -10,7 +10,7 @@ public:
 	BinarySearchTree(T k);
 	~BinarySearchTree();
 
-	Node* Search(T k);
+	Node<T>* Search(T k);
 	void Insert(T k);
 	void Delete();
 
@@ -20,22 +20,24 @@ public:
 	void InorderTreeWalk();
 
 private:
-	Node* root;
+	Node<T>* root;
 };
 
 template<typename T>
 BinarySearchTree<T>::BinarySearchTree(T k)
 {
-	root = new Node(k);
+	root = new Node<T>(k);
 }
 
 template<typename T>
 BinarySearchTree<T>::~BinarySearchTree()
 {
+	std::cout << "delete bst";
 	delete root;
 }
 
-Node* treeSearch(Node* x, int k)
+template<typename T>
+Node<T>* treeSearch(Node<T>* x, int k)
 {
 	if (x == 0 || x->key == k)
 		return x;
@@ -46,7 +48,7 @@ Node* treeSearch(Node* x, int k)
 }
 
 template<typename T>
-Node* BinarySearchTree<T>::Search(T k)
+Node<T>* BinarySearchTree<T>::Search(T k)
 {
 	return treeSearch(root, k);
 }
@@ -55,10 +57,10 @@ Node* BinarySearchTree<T>::Search(T k)
 template<typename T>
 void BinarySearchTree<T>::Insert(T k)
 {
-	Node* z = new Node(k);
+	Node<T>* z = new Node<T>(k);
 
-	Node* x = root;
-	Node* y = 0;
+	Node<T>* x = root;
+	Node<T>* y = 0;
 
 	while (x != 0)
 	{
@@ -77,7 +79,8 @@ void BinarySearchTree<T>::Insert(T k)
 	else y->right = z;
 }
 
-void inordertreewalk(Node* x)
+template<typename T>
+void inordertreewalk(Node<T>* x)
 {
 	if (x != 0){
 		inordertreewalk(x->left);
