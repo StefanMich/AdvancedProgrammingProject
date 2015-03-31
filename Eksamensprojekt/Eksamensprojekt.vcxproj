@@ -91,7 +91,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="Eksamensprojekt.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="StackOfInt.cpp" />

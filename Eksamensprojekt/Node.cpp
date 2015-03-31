@@ -9,4 +9,6 @@ Node::Node(int k)
 
 Node::~Node()
 {
+	delete right;
+	delete left;
 }
