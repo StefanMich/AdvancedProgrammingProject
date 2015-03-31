@@ -2,8 +2,9 @@
 #include <ostream>
 
 
-Data::Data()
+Data::Data(int k )
 {
+	this->k = k;
 }
 
 
@@ -11,7 +12,7 @@ Data::~Data()
 {
 }
 
-bool operator<(const Data& d1,const Data& d2)
+bool operator<(const Data& d1, const Data& d2)
 {
 	if (d1.k < d2.k)
 		return true;

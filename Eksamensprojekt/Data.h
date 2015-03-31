@@ -4,7 +4,7 @@
 class Data
 {
 public:
-	Data();
+	Data(int k = 0);
 	~Data();
 
 	int k;
