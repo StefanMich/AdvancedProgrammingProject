@@ -15,6 +15,7 @@
 #include <iostream>
 
 
+
 using string = std::string;
 
 
@@ -23,15 +24,18 @@ void StackTemplateTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	BinarySearchTree<string>* bst = new BinarySearchTree<string>("hest");
+
+	bst->InorderTreeWalk();
+
+
+	bst->Insert("gris");
+	bst->Insert("ko");
 	
-	BinarySearchTree<string> bst = BinarySearchTree<string>("hest");
-	bst.Insert("ko");
-	bst.Insert("gris");
-	bst.Insert("abe");
+	bst->InorderTreeWalk();
 	
 	
-	bst.InorderTreeWalk();
-	
+
 	return 0;
 }
 
