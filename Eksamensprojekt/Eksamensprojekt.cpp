@@ -7,6 +7,10 @@
 #include "StackTemplate.h"
 #include "StackTemplateValueArgument.h"
 #include "StackTemplateBoolSpecialization.h"
+
+#include "Node.h"
+#include "BinarySearchTree.h"
+
 #include <string>
 #include <iostream>
 
@@ -19,9 +23,18 @@ void StackTemplateTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	BinarySearchTree bst = BinarySearchTree(5);
+	bst.Insert(1);
+	bst.Insert(5);
+	bst.Insert(2);
+	bst.Insert(4);
+	bst.Insert(3);
+	bst.Insert(1);
 
-
-
+	Node* s = bst.Search(5);
+	
+	bst.InorderTreeWalk();
+	std::cout << s->key;
 	return 0;
 }
 
