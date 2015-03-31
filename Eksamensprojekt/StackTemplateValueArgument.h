@@ -27,7 +27,7 @@ StackTemplateValueArgument<T, entries>::StackTemplateValueArgument() : topIndex{
 template<typename T, int entries>
 StackTemplateValueArgument<T, entries>::~StackTemplateValueArgument()
 {
-	delete arr;
+	delete[] arr;
 }
 
 template<typename T, int entries>
