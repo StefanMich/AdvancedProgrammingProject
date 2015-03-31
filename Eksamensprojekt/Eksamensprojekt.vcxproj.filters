@@ -42,6 +42,9 @@
     <ClInclude Include="BinarySearchTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Eksamensprojekt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

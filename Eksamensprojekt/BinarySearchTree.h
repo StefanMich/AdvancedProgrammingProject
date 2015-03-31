@@ -62,6 +62,8 @@ void BinarySearchTree<T>::Insert(T k)
 	Node<T>* x = root;
 	Node<T>* y = 0;
 
+
+
 	while (x != 0)
 	{
 		y = x;

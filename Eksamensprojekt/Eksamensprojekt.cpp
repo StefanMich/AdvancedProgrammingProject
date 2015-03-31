@@ -10,6 +10,7 @@
 
 #include "Node.h"
 #include "BinarySearchTree.h"
+#include "Data.h"
 
 #include <string>
 #include <iostream>
@@ -24,13 +25,13 @@ void StackTemplateTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BinarySearchTree<string>* bst = new BinarySearchTree<string>("hest");
+	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data());
 
 	bst->InorderTreeWalk();
 
 
-	bst->Insert("gris");
-	bst->Insert("ko");
+	bst->Insert(Data());
+	bst->Insert(Data());
 	
 	bst->InorderTreeWalk();
 	

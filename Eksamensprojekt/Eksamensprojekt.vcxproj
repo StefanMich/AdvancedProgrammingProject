@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="Data.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="StackOfInt.h" />
     <ClInclude Include="StackTemplate.h" />
@@ -91,6 +92,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Data.cpp" />
     <ClCompile Include="Eksamensprojekt.cpp" />
     <ClCompile Include="StackOfInt.cpp" />
     <ClCompile Include="stdafx.cpp" />
