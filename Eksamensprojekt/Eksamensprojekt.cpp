@@ -11,6 +11,7 @@
 #include "Node.h"
 #include "BinarySearchTree.h"
 #include "Data.h"
+#include "DataIncompatible.h"
 
 #include <string>
 #include <iostream>
@@ -22,17 +23,13 @@ using string = std::string;
 
 void StackOfIntTest();
 void StackTemplateTest();
+void StackTemplateBoolSpecializationTest();
+
+void BSTConceptTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data(1));
-	bst->Insert(Data(2));
-	bst->Insert(Data(3));
 	
-	bst->InorderTreeWalk();
-	
-	
-
 	return 0;
 }
 
@@ -113,4 +110,21 @@ void StackTemplateBoolSpecializationTest()
 
 	for (int j = 0; j < 16; j++)
 		std::cout << "Popping: " << s.Pop() << "\n";
+}
+
+void BSTTemplateTest()
+{
+	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data(1));
+	bst->Insert(Data(2));
+	bst->Insert(Data(3));
+
+	bst->InorderTreeWalk();
+
+	/*
+	BinarySearchTree<DataIncompatible>* bstIncompatible = new BinarySearchTree<DataIncompatible>(DataIncompatible(1));
+	bstIncompatible->Insert(DataIncompatible(2));
+	bstIncompatible->Insert(DataIncompatible(3));
+
+	bstIncompatible->InorderTreeWalk();
+	*/
 }
