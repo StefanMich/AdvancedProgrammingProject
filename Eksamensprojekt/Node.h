@@ -5,7 +5,7 @@ template<typename T>
 class Node
 {
 public:
-	Node(T k);
+	Node(T k );
 	~Node();
 
 	Node* left;
@@ -25,6 +25,6 @@ Node<T>::Node(T k)
 template<typename T>
 Node<T>::~Node()
 {
-	
+
 }
 

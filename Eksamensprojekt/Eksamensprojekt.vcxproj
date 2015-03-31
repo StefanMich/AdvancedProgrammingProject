@@ -113,6 +113,7 @@
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="Data.h" />
+    <ClInclude Include="DataIncompatible.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="StackOfInt.h" />
     <ClInclude Include="StackTemplate.h" />
@@ -124,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Concepts.cpp" />
     <ClCompile Include="Data.cpp" />
+    <ClCompile Include="DataIncompatible.cpp" />
     <ClCompile Include="Eksamensprojekt.cpp" />
     <ClCompile Include="StackOfInt.cpp" />
     <ClCompile Include="stdafx.cpp" />
