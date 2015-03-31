@@ -25,13 +25,9 @@ void StackTemplateTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data());
-
-	bst->InorderTreeWalk();
-
-
-	bst->Insert(Data());
-	bst->Insert(Data());
+	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data(1));
+	bst->Insert(Data(2));
+	bst->Insert(Data(3));
 	
 	bst->InorderTreeWalk();
 	
