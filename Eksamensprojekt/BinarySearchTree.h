@@ -2,11 +2,16 @@
 
 #include "Node.h" 
 #include <iostream>
+#include "Concepts.cpp"
 
 template<typename T>
 class BinarySearchTree
 {
+	
 public:
+	static_assert(Has_Less_Than<T>(), "template type must implement the less than operator, <");
+	static_assert(Has_Output<T>(), "template type must implement output operator, <<");
+
 	BinarySearchTree(T k);
 	~BinarySearchTree();
 

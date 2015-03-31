@@ -122,6 +122,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Concepts.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="Eksamensprojekt.cpp" />
     <ClCompile Include="StackOfInt.cpp" />
