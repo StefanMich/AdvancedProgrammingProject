@@ -114,17 +114,29 @@ void StackTemplateBoolSpecializationTest()
 
 void BSTConceptTest()
 {
-	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data(1));
-	bst->Insert(Data(2));
-	bst->Insert(Data(3));
+	//using string, no problem
+	BinarySearchTree<string> bstString("hest");
+	bstString.Insert("ko");
+	bstString.Insert("gris");
 
-	bst->InorderTreeWalk();
+	bstString.InorderTreeWalk();
 
 	/*
-	BinarySearchTree<DataIncompatible>* bstIncompatible = new BinarySearchTree<DataIncompatible>(DataIncompatible(1));
-	bstIncompatible->Insert(DataIncompatible(2));
-	bstIncompatible->Insert(DataIncompatible(3));
+	//Custom datatype, does not have < and << implemented - does not compile
+	BinarySearchTree<DataIncompatible> bstIncompatible(DataIncompatible(1));
+	bstIncompatible.Insert(DataIncompatible(2));
+	bstIncompatible.Insert(DataIncompatible(3));
 
-	bstIncompatible->InorderTreeWalk();
+	bstIncompatible.InorderTreeWalk();
 	*/
+
+
+	//The same datatype, now with < and << implemented, compiles and works as intended
+	BinarySearchTree<Data> bst(Data(1));
+	bst.Insert(Data(2));
+	bst.Insert(Data(3));
+
+
+	bst.InorderTreeWalk();
+
 }
