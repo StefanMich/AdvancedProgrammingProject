@@ -112,7 +112,7 @@ void StackTemplateBoolSpecializationTest()
 		std::cout << "Popping: " << s.Pop() << "\n";
 }
 
-void BSTTemplateTest()
+void BSTConceptTest()
 {
 	BinarySearchTree<Data>* bst = new BinarySearchTree<Data>(Data(1));
 	bst->Insert(Data(2));
