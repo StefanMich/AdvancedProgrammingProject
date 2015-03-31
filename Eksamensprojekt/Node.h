@@ -25,6 +25,9 @@ Node<T>::Node(T k)
 template<typename T>
 Node<T>::~Node()
 {
-
+	if (left != 0)
+		delete left;
+	if (right != 0)
+		delete right;
 }
 
