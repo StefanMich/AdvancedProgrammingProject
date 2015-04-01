@@ -54,14 +54,73 @@ void StackTemplate<T>::Push(T i) (*@)\label{usageOfT}@*)
 }
 \end{lstlisting}
 
-The line \lstinline|template<typename T>| tells the C++ compiler that the following is a template where all instances of T should be changed with the specified type in any template instantiation.
-In the implementation of the Push method the T can be seen used in line \ref{usageOfT} where the \lstinline|StackTemplate<T>| specifies that this implementation of Push belongs to the template of the stack containing one type parameter.
+The line \lstinline|template<typename T>| tells the C++ compiler that the following is a template where all instances of \texttt{T} should be changed with the specified type in any template instantiation.
+In the implementation of the Push method the \texttt{T} can be seen used in line \ref{usageOfT} where the \lstinline|StackTemplate<T>| specifies that this implementation of Push belongs to the template of the stack containing one type parameter.
 The T used as the argument specifies that the argument needs to be of the same type as the type used for the stack. 
 
 With the first version of the template of a stack in place, the process of ``lifting'' can continue . 
 Lifting is the act of taking an implementation from a concrete level to a general level while maintaining high performance\cite[p.~700]{stroustrup2013c++}.
 
+\section{Template arguments}
+The basic use of templates is extend an implementation with type parameters.
+Templates can also use other parameters, expanding the possibilities of templates \cite[p.~722]{stroustrup2013c++}.
+One of these possibilities is to use a value as a template parameter.
+This can be used to define sizes of the template. \cite[p.~724]{stroustrup2013c++}
+
+In the initial implementation of the stack I chose not to make it dynamically expand when adding elements.
+This means that its size is fixed to 16 elements.
+This is of course inefficient if you only insert 2 elements, and insufficient if you need to insert 20 elements.
+A possible solution is to use a value parameter to specify how big the stack needs to be.
+
+\begin{lstlisting}
+template<typename T, int entries>
+StackTemplateValueArgument<T, entries>::StackTemplateValueArgument() : topIndex{ -1 }
+{
+	arr = new T[entries];
+}
+\end{lstlisting}
+
+
+The implementation of the stack with value parameters can be found in \file{StackTemplateValueArgument.h}.
+It still uses the \texttt{T} as type parameter but now also has an \texttt{entries} parameter that specifies the size of the stack.
+Shown is the constructor where the array is created, where the value parameter is used to create the array of type \texttt{T} with \texttt{entries} elements
+
+This implementation will be efficient in cases where the user knows how many elements needs to be in the stack.
+
+This feature is not present at all in C\# generics which is restricted to only type parameters \cite{cgenerics} making it impossible to reach a similar result.
+
+\section{Specialization}
+Looking at the templates written for the stack it seems at this point to be a very generic implementation of the simple data structure, but it can be lifted even more.
+
+Consider a stack of integers and a stack of boolean values.
+In principle the same thing should happen.
+Push an element on the stack, pop an element, the same thing happens independent of the data type.
+The problem is that a boolean is stored in a byte even though it can be expressed as a single bit.
+
+With this issue in mind I created a \texttt{bool} specialization of the stack.
+It is contained in \file{StackTemplateBoolSpecialization.h}.
+Here I implemented the stack to store the boolean values as a single byte instead of in a byte for each.
+
+\begin{lstlisting}
+bool StackTemplateBoolSpecialization<bool>::Top()
+{
+	int positionInRepr = topIndex / 8;
+	int positionInByte = topIndex % 8;
+
+	char entry = arr[positionInRepr] << (positionInByte);
+	entry = entry >> 7;
+	bool poppedEntry = (bool)entry;
+
+	return poppedEntry;
+}
+\end{lstlisting}
+
+Presented is a the \lstinline|Top()| method from the boolean stack specialization.
+As this is the boolean specialization of the stack the class name is qualified with \texttt{bool}. 
+The current top entry is found by shifting the bits first to the left, removing the bits of the rest of the stack and then 7 to the right for the boolean value to settle at the rightmost bit, making it possible to read the boolean value from it.
+
+
 \bibliography{bib}
-\bibliographystyle{plainnat}
+\bibliographystyle{plain}
 
 \end{document}
