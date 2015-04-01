@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eksamensprojekt", "Eksamensprojekt\Eksamensprojekt.vcxproj", "{EA7FBA85-AF71-4D61-AED3-771966437B1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sharpComparison", "sharpComparison\sharpComparison.csproj", "{CFA85C57-620D-4472-A030-788B6738790F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		c++13 CTP|Any CPU = c++13 CTP|Any CPU
@@ -35,21 +33,6 @@ Global
 		{EA7FBA85-AF71-4D61-AED3-771966437B1D}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{EA7FBA85-AF71-4D61-AED3-771966437B1D}.Release|Win32.ActiveCfg = Release|Win32
 		{EA7FBA85-AF71-4D61-AED3-771966437B1D}.Release|Win32.Build.0 = Release|Win32
-		{CFA85C57-620D-4472-A030-788B6738790F}.c++13 CTP|Any CPU.ActiveCfg = c++13 CTP|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.c++13 CTP|Any CPU.Build.0 = c++13 CTP|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.c++13 CTP|Mixed Platforms.ActiveCfg = c++13 CTP|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.c++13 CTP|Mixed Platforms.Build.0 = c++13 CTP|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.c++13 CTP|Win32.ActiveCfg = c++13 CTP|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{CFA85C57-620D-4472-A030-788B6738790F}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
