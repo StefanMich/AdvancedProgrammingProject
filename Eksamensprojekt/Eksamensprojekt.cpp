@@ -28,7 +28,11 @@ void BSTConceptTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	StackOfIntTest();
+	StackTemplateTest();
 	StackTemplateBoolSpecializationTest();
+
+	BSTConceptTest();
 
 	return 0;
 }
