@@ -160,26 +160,25 @@ void StackTemplateBoolSpecialization<bool>::Push(bool i)
 	if (topIndex >= 16)
 		throw std::out_of_range{ "overflow" };
 
-	
-	int positionInRepr = (topIndex+1) / 8;
+
+	int positionInRepr = (topIndex + 1) / 8;
 
 	int index = arr[positionInRepr];
 
 	if (i == true)
 	{
-		int mellem = ((topIndex + 1) % 8);
-		int shift = 7 - mellem;
+		int shift = 7 - ((topIndex + 1) % 8);
 
 		unsigned char bit = 1 << shift;
 		index = index | bit;
 		arr[positionInRepr] = index;
 		topIndex++;
 	}
-	else if(i == false)
+	else if (i == false)
 	{
 		topIndex++;
 	}
-	
+
 
 	//printArr(arr);
 	//std::cout << topIndex << std::endl;
