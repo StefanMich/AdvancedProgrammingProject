@@ -28,7 +28,8 @@ void BSTConceptTest();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	
+	StackTemplateBoolSpecializationTest();
+
 	return 0;
 }
 
@@ -109,6 +110,13 @@ void StackTemplateBoolSpecializationTest()
 
 	for (int j = 0; j < 16; j++)
 		std::cout << "Popping: " << s.Pop() << "\n";
+
+	StackTemplate<bool> oldImpl = StackTemplate<bool>();
+	oldImpl.Push(false);
+	oldImpl.Push(true);
+
+	std::cout << "simple implementation: " << sizeof(oldImpl) << " specialized: " << sizeof(s);
+
 }
 
 void BSTConceptTest()
@@ -139,4 +147,13 @@ void BSTConceptTest()
 
 	bst.InorderTreeWalk();
 
+
+	BinarySearchTree<int> bstInt(1);
+	bstInt.Insert(2);
+	bstInt.Insert(3);
+
+
+	bstInt.InorderTreeWalk();
+
+	std::cout << "Arbitrary addition " << bstInt.AddArbitrary(10) << std::endl;
 }
