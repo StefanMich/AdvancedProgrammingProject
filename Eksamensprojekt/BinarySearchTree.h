@@ -9,8 +9,8 @@ class BinarySearchTree
 {
 	
 public:
-	static_assert(Has_Less_Than<T>(), "template type must implement the less than operator, <");
-	static_assert(Has_Output<T>(), "template type must implement output operator, <<");
+	static_assert(Has_Less_Than<T>(), "template arguement type must implement the less than operator, <, in order to compare the inserted elements");
+	static_assert(Has_Output<T>(), "template argument type must implement output operator, <<, in order to print the tree in an inorder tree traversal");
 
 	BinarySearchTree(T k);
 	~BinarySearchTree();
