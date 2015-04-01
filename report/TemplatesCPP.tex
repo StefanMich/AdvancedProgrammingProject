@@ -34,7 +34,7 @@ On the other hand templates in C++ are generated from the principle of duck typi
 
 \section{Overview}
 In order to experiment with templates in C++ I choose to implement two very simple data structures, the stack and the binary search tree.
-Because the emphasis is on templates and not the workings of these data structures, not all features are implemented, only what is necessary in order to demonstrate the power of templates.
+Because the emphasis is on templates and not the workings of these data structures, not all features are implemented, only what is necessary in order to demonstrate templates and the features templates provide.
 The implementations are taken from \citet{algo}.
 
 \section{The first template}
@@ -45,7 +45,8 @@ The implementation follows the implementation in \citet[232]{algo}.
 
 Looking at this relatively simple class it should be a simple job to use a type parameter instead of the hard coded integer type.
 
-The implementation of the stack with type parameters can be seen in \file{StackTemplate.h}
+The implementation of the stack with type parameters can be seen in \file{StackTemplate.h}.
+The method \lstinline!Push(T i)! is shown below.
 
 \begin{lstlisting}
 template<typename T>
@@ -57,17 +58,17 @@ void StackTemplate<T>::Push(T i) (*@)\label{usageOfT}@*)
 \end{lstlisting}
 
 The line \lstinline|template<typename T>| tells the C++ compiler that the following is a template where all instances of \texttt{T} should be changed with the specified type in any template instantiation.
-In the implementation of the Push method the \texttt{T} can be seen used in line \ref{usageOfT} where the \lstinline|StackTemplate<T>| specifies that this implementation of Push belongs to the template of the stack containing one type parameter.
+In the implementation of the Push method the \texttt{T} can be seen used in line \ref{usageOfT} where the \lstinline|StackTemplate<T>| specifies that this implementation of \lstinline!Push! belongs to the template of the stack containing one type parameter.
 The T used as the argument specifies that the argument needs to be of the same type as the type used for the stack. 
 
-With the first version of the template of a stack in place, the process of ``lifting'' can continue . 
+With the first version of the template of a stack in place, the process of ``lifting'' can continue. 
 Lifting is the act of taking an implementation from a concrete level to a general level while maintaining high performance\cite[p.~700]{stroustrup2013c++}.
 
 \section{Template arguments}
-The basic use of templates is extend an implementation with type parameters.
+The basic use of templates is to extend an implementation with type parameters.
 Templates can also use other parameters, expanding the possibilities of templates \cite[p.~722]{stroustrup2013c++}.
 One of these possibilities is to use a value as a template parameter.
-This can be used to define sizes of the template. \cite[p.~724]{stroustrup2013c++}
+This can be used to define sizes of some aspect of the template. \cite[p.~724]{stroustrup2013c++}
 
 In the initial implementation of the stack I chose not to make it dynamically expand when adding elements.
 This means that its size is fixed to 16 elements.
@@ -89,14 +90,14 @@ Shown is the constructor where the array is created, where the value parameter i
 
 This implementation will be efficient in cases where the user knows how many elements needs to be in the stack.
 
-This feature is not present at all in C\# generics which is restricted to only type parameters \cite{cgenerics} making it impossible to reach a similar result.
+This feature is not present at all in C\# generics which is restricted to only type parameters making it impossible to reach a similar result\cite{cgenerics}.
 
 \section{Specialization}
 Looking at the templates written for the stack it seems at this point to be a very generic implementation of the simple data structure, but it can be lifted even more.
 
 Consider a stack of integers and a stack of boolean values.
 In principle the same thing should happen.
-Push an element on the stack, pop an element, the same thing happens independent of the data type.
+Push an element on the stack, pop an element, the same thing happens independently of the data type.
 The problem is that a boolean is stored in a byte even though it can be expressed as a single bit.
 
 With this issue in mind I created a \texttt{bool} specialization of the stack.
@@ -109,7 +110,7 @@ bool StackTemplateBoolSpecialization<bool>::Top()
 	int positionInRepr = topIndex / 8;
 	int positionInByte = topIndex % 8;
 
-	char entry = arr[positionInRepr] << (positionInByte);
+	char entry = arr[positionInRepr] <<(positionInByte);
 	entry = entry >> 7;
 	bool poppedEntry = (bool)entry;
 
@@ -131,8 +132,8 @@ Again this is a feature that C\# simply does not have.
 In C\# generics you can provide one implementation, and that implementation will be used for every type parameter that will be provided\cite{diff}.
 
 \section{Concepts}
-In order to explore templates even further I implemented a binary search tree as it is implemented in \citet[286]{algo}.
-A binary search tree is still a still a simple data structure, but it has some requirements of its type arguments.
+In order to explore templates even further I implemented a binary search tree as it is described in \citet[286]{algo}.
+A binary search tree a still a simple data structure, but it has some requirements of its type arguments.
 In order to insert elements in the tree it is necessary that the type used as argument can be compared.
 Otherwise it simply does not make sense to build the tree.
 
@@ -153,29 +154,31 @@ The rule is that when the compiler tries to instantiate a template with an argum
 The implementation of a concept that requires the less than operator ($ < $) is shown below.
 
 \begin{lstlisting}
+//using SFINAE to achieve concept
 template<typename T>
 struct get_less_than_result
 {
-private:
+	private:
 	template<typename X>
- 	static auto check(X const& x) -> decltype(x < x); (*@\label{check}@*)
+	static auto check(X const& x) -> decltype(x < x); (*@\label{check}@*)
 	static substitution_failure check(...);
-	
+
 	public:
 	using type = decltype(check(std::declval<T>()));
 };
 
+//The concept usable in a static assert
 template<typename T>
 constexpr bool Has_Less_Than()
 {
-return has_less_than<T>::value;
+	return has_less_than<T>::value;
 }
 \end{lstlisting}
 
 Here the SFINAE rule is used to choose between two implementations of the \lstinline|check()| method.
 In line \ref{check} the method is define to have the return type of the expression \lstinline|x < x| where x is of the template argument type.
 If this operation results in a compiler error, this definition will simply not be used, and the definition in the line below is used instead.
-This definition returns the type \lstinline|substitution_failure|, which has been define in the framework to have the value false.
+This definition returns the type \lstinline|substitution_failure|, which has been defined in the framework to have the value false.
 This concept can now be used to assert if a template argument has the less than operator defined.
 
 \begin{lstlisting}
@@ -204,13 +207,14 @@ Without the assertions just mentioned the Visual Studio C++ compiler gives the f
 This error message is in this case not that bad, but that may be because I am the implementer of the tree.
 If the template gets just a little more complex, and another programmer is using it, this type of error message can very quickly get very hard to debug.
 Instead I can use my static assertion and create my own error message. 
-As seen in the above code sample, I used the error ``template argument type must implement the less than operator, <, in order to compare the inserted elements''.
+As seen in the above code sample, I used the error ``template argument type must implement the less than operator, $ < $, in order to compare the inserted elements''.
 I can tell the programmer exactly what is missing and why it is a problem.
 It is then much easier for him to make an informed decision on how to proceed with his work, without needing to debug deep into a template that he has not implemented.
 
-While the C\# \texttt{where} construct is easier and faster to set up, the concepts of C++ are not dependant on being a class or interface. 
+While the C\# \texttt{where} construct is easier and faster to set up, the concepts of C++ are not dependent on being a class or interface. 
 The checks made in the concept can be almost anything.
-The standard library header \lstinline|<type-traits>| contains predefined predicates such as \lstinline|is_default_constructible<X>| and \lstinline|is_assignable|.
+The standard library header \lstinline|<type-traits>| contains predefined predicates such as \lstinline|is_default_constructible<X>| and \lstinline|is_assignable<X>|.
+The possibilities are much broader than just adhering to a class or interface.
 
 \section{Calling of arithmetic operators}
 The last aspect of templates that I want to explore is the final testament that C++ templates are more flexible than the C\# counterpart.
@@ -235,7 +239,7 @@ The techniques used in the previous section can of course be used to statically 
 In this report I have explored the possibilities of templates in C++.
 I have consulted the literature in order to find and understand the features that templates provide which C\# does not provide in generic types.
 
-Templates and generics are a tool that try to achieve many of the same goals.
+Templates and generics are tools that try to achieve many of the same goals.
 But because of the type safe nature and the fact that it is instantiated at runtime there are some aspects where generics are simply not as powerful as templates.
 
 In the work I have done several very useful features turned up.
@@ -245,6 +249,6 @@ Finally the concepts of C++ is a powerful way of expressing requirements of the 
 
 
 \bibliography{bib}
-\bibliographystyle{plainnat}
+\bibliographystyle{unsrtnat}
 
 \end{document}
