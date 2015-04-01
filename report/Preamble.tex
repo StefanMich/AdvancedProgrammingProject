@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[danish]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage{lipsum}
@@ -12,5 +12,39 @@
 \usepackage{todonotes}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{listings}
 
-  
+\lstdefinestyle{standard}
+{
+	frame=shadowbox,
+	framesep=5pt,
+	rulecolor=\color{blue!40!black},
+	rulesepcolor=\color{white!93!black},
+	numbers=left,
+	numberstyle=\tiny,
+	numberfirstline=true,
+	%numberblanklines=false,
+	stepnumber=1,
+	numbersep=9pt,	
+	captionpos=b,
+	escapeinside={(*}{*)},
+	breaklines=true,
+	tabsize=4,
+	language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#}
+}
+\lstset{style=standard}
+\lstset{escapeinside={(*@}{@*)}}
+
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}

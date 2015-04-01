@@ -5,12 +5,63 @@
 \author{Stefan Micheelsen \\smiche11@student.aau.dk \\Studentnumber: 20112707}
 \date{1. April 2015}
 
+\newcommand{\file}[1]
+{
+	\textit{\color{gray} ``#1''}
+}
+
 \begin{document}
+
+
 
 \maketitle
 
-\section{Status}
+This report will describe my work on template programming in C++.
+The main focus will be a comparison with the experience I have with generics in C\#.
+A lot of the work in the report will be experiments with features that are not present in the C\# language and are therefore not known to me.
+
+
+\section{Templates in C++}
+Templates is the C++ implementation of what is called generic programming.
+Generic programming is a technique that aims a making it possible to implement general algorithms. \cite[p.~700]{stroustrup2013c++}.
+
+Without generic programming it would be necessary to write a variation of a list for each data type you would want to put in the list.
+Generic programming provides a tool to provide functionality for each data type, without having to write each of them by hand.
+
+In C\# generic types are compiled to a annotated version in the intermediate code, and the specialized type is generated in the runtime when it is needed\cite{genericruntime}.
+On the other hand templates in C++ are generated from the principle of duck typing, meaning that the use of a type parameter determines the choice of implementation and thus the behavior of a method.\cite[p.~700]{stroustrup2013c++}.
 
 \section{Overview}
+In order to experiment with templates in C++ I choose to implement two very simple data structures, the stack and the binary search tree.
+Because the emphasis is on templates and not the workings of these data structures, not all features are implemented, only what is necessary in order to demonstrate the power of templates.
+The implementations are taken from \citet{algo}.
+
+\section{The first template}
+When designing a template Bjarne Stroustrup recommends starting out by implementing the class without type parameters\cite[p.~670]{stroustrup2013c++}. 
+I therefore started out by investigating the stack data structure and implemented it to be a stack of integers.
+The initial implementation can be found in \file{StackOfInt.h} and \file{StackOfInt.cpp}.
+
+Looking at this relatively simple class it should be a simple job to use a type parameter instead of the hard coded integer type.
+
+The implementation of the stack with type parameters can be seen in \file{StackTemplate.h}
+
+\begin{lstlisting}
+template<typename T>
+void StackTemplate<T>::Push(T i) (*@)\label{usageOfT}@*)
+{
+	topIndex++;
+	arr[topIndex] = i;
+}
+\end{lstlisting}
+
+The line \lstinline|template<typename T>| tells the C++ compiler that the following is a template where all instances of T should be changed with the specified type in any template instantiation.
+In the implementation of the Push method the T can be seen used in line \ref{usageOfT} where the \lstinline|StackTemplate<T>| specifies that this implementation of Push belongs to the template of the stack containing one type parameter.
+The T used as the argument specifies that the argument needs to be of the same type as the type used for the stack. 
+
+With the first version of the template of a stack in place, the process of ``lifting'' can continue . 
+Lifting is the act of taking an implementation from a concrete level to a general level while maintaining high performance\cite[p.~700]{stroustrup2013c++}.
+
+\bibliography{bib}
+\bibliographystyle{plainnat}
 
 \end{document}
