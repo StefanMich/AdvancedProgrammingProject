@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Stack">
+      <UniqueIdentifier>{064c55b9-6f08-443a-8f8b-10099ff2d19c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BST">
+      <UniqueIdentifier>{8c8ccb36-457b-4947-9e52-734ebff9617b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -25,28 +31,28 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StackOfInt.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stack</Filter>
     </ClInclude>
     <ClInclude Include="StackTemplate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StackTemplateValueArgument.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stack</Filter>
     </ClInclude>
     <ClInclude Include="StackTemplateBoolSpecialization.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stack</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="StackTemplateValueArgument.h">
+      <Filter>Header Files\Stack</Filter>
     </ClInclude>
     <ClInclude Include="BinarySearchTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\BST</Filter>
     </ClInclude>
     <ClInclude Include="Data.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\BST</Filter>
     </ClInclude>
     <ClInclude Include="DataIncompatible.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\BST</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\BST</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
