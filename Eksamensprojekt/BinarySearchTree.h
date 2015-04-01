@@ -37,14 +37,13 @@ BinarySearchTree<T>::BinarySearchTree(T k)
 template<typename T>
 BinarySearchTree<T>::~BinarySearchTree()
 {
-	std::cout << "delete bst";
 	delete root;
 }
 
 template<typename T>
 Node<T>* treeSearch(Node<T>* x, int k)
 {
-	if (x == 0 || x->key == k)
+	if (x == nullptr || x->key == k)
 		return x;
 
 	if (k < x->key)
@@ -65,11 +64,11 @@ void BinarySearchTree<T>::Insert(T k)
 	Node<T>* z = new Node<T>(k);
 
 	Node<T>* x = root;
-	Node<T>* y = 0;
+	Node<T>* y = nullptr;
 
 
 
-	while (x != 0)
+	while (x != nullptr)
 	{
 		y = x;
 		if (z->key < x->key)
@@ -79,7 +78,7 @@ void BinarySearchTree<T>::Insert(T k)
 
 	z->parent = y;
 
-	if (y == 0)
+	if (y == nullptr)
 		root = z;
 	else if (z->key < y->key)
 		y->left = z;
@@ -89,7 +88,7 @@ void BinarySearchTree<T>::Insert(T k)
 template<typename T>
 void inordertreewalk(Node<T>* x)
 {
-	if (x != 0){
+	if (x != nullptr){
 		inordertreewalk(x->left);
 		std::cout << x->key;
 		inordertreewalk(x->right);
