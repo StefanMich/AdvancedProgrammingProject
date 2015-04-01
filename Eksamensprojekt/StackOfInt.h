@@ -12,7 +12,7 @@ public:
 	int Top();
 
 private:
-	int arr[10];
+	int arr[16];
 	int topIndex;
 };
 

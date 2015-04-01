@@ -1,4 +1,7 @@
 #pragma once
+/// <summary>
+/// An implementation of a stack that has a template arguemnt T for the type of the elements in the stack
+/// </summary>
 template<typename T>
 class StackTemplate
 {
@@ -13,27 +16,41 @@ public:
 	T Top();
 
 private:
-	T arr[10];
+	T arr[16];
 	int topIndex;
 };
 
 
+/// <summary>
+/// Initializes a new instance of the <see cref="StackTemplate{T}"/> class.
+/// </summary>
 template<typename T>
 StackTemplate<T>::StackTemplate() : topIndex{ -1}
 {
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="StackTemplate{T}"/> class.
+/// </summary>
 template<typename T>
 StackTemplate<T>::~StackTemplate()
 {
 }
 
+/// <summary>
+/// returns the top element of the stack without popping it
+/// </summary>
+/// <returns>The top element of the stack</returns>
 template<typename T>
 T StackTemplate<T>::Top()
 {
 	return arr[topIndex];
 }
 
+/// <summary>
+/// Returns whether the stack is empty
+/// </summary>
+/// <returns>True if the stack is empty, false otherwise</returns>
 template<typename T>
 bool StackTemplate<T>::StackEmpty()
 {
@@ -42,6 +59,10 @@ bool StackTemplate<T>::StackEmpty()
 	else return false;
 }
 
+/// <summary>
+/// Pushes the specified element to the stack.
+/// </summary>
+/// <param name="i">The element to push</param>
 template<typename T>
 void StackTemplate<T>::Push(T i)
 {
@@ -49,6 +70,10 @@ void StackTemplate<T>::Push(T i)
 	arr[topIndex] = i;
 }
 
+/// <summary>
+/// Pops the top element from the stack
+/// </summary>
+/// <returns>The popped element</returns>
 template<typename T>
 T StackTemplate<T>::Pop()
 {
@@ -60,3 +85,4 @@ T StackTemplate<T>::Pop()
 		return arr[topIndex + 1];
 	}
 }
+

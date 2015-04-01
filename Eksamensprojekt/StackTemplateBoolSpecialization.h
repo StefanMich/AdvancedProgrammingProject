@@ -7,6 +7,9 @@
 void printArr(unsigned char* arr);
 void printChar(unsigned char ch);
 
+/// <summary>
+/// An implementation of a stack that has a template arguemnt T for the type of the elements in the stack as well as a integer template argument specifying the size of the stack
+/// </summary>
 template<typename T>
 class StackTemplateBoolSpecialization
 {
@@ -26,24 +29,39 @@ private:
 };
 
 
+
+/// <summary>
+/// Initializes a new instance of the <see cref="StackTemplate{T}"/> class.
+/// </summary>
 template<typename T>
 StackTemplateBoolSpecialization<T>::StackTemplateBoolSpecialization() : topIndex{ -1 }
 {
-	arr = new T[10];
+	arr = new T[16];
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="StackTemplate{T}"/> class.
+/// </summary>
 template<typename T>
 StackTemplateBoolSpecialization<T>::~StackTemplateBoolSpecialization()
 {
-	delete arr;
+	delete[] arr;
 }
 
+/// <summary>
+/// returns the top element of the stack without popping it
+/// </summary>
+/// <returns>The top element of the stack</returns>
 template<typename T>
 T StackTemplateBoolSpecialization<T>::Top()
 {
 	return arr[topIndex];
 }
 
+/// <summary>
+/// Returns whether the stack is empty
+/// </summary>
+/// <returns>True if the stack is empty, false otherwise</returns>
 template<typename T>
 bool StackTemplateBoolSpecialization<T>::StackEmpty()
 {
@@ -52,16 +70,25 @@ bool StackTemplateBoolSpecialization<T>::StackEmpty()
 	else return false;
 }
 
+/// <summary>
+/// Pushes the specified element to the stack.
+/// </summary>
+/// <param name="i">The element to push</param>
 template<typename T>
 void StackTemplateBoolSpecialization<T>::Push(T i)
 {
 	topIndex++;
 
-	if (topIndex >= 10)
+	if (topIndex >= 16)
 		throw std::out_of_range{ "overflow" };
 	else arr[topIndex] = i;
+
 }
 
+/// <summary>
+/// Pops the top element from the stack
+/// </summary>
+/// <returns>The popped element</returns>
 template<typename T>
 T StackTemplateBoolSpecialization<T>::Pop()
 {
@@ -80,7 +107,7 @@ T StackTemplateBoolSpecialization<T>::Pop()
 // Complete bool specialization
 
 template<>
-class StackTemplateBoolSpecialization<bool>
+class StackTemplateBoolSpecialization < bool >
 {
 public:
 	StackTemplateBoolSpecialization();
@@ -114,7 +141,7 @@ bool StackTemplateBoolSpecialization<bool>::Top()
 	int positionInRepr = topIndex / 8;
 	int positionInByte = topIndex % 8;
 
-	char entry = arr[positionInRepr] << (positionInByte );
+	char entry = arr[positionInRepr] << (positionInByte);
 	entry = entry >> 7;
 	bool poppedEntry = (bool)entry;
 
@@ -160,7 +187,6 @@ void StackTemplateBoolSpecialization<bool>::Push(bool i)
 
 bool StackTemplateBoolSpecialization<bool>::Pop()
 {
-	//std::cout << "bool specialization";
 	if (StackEmpty())
 		throw std::out_of_range{ "underflow" };
 	else
@@ -168,7 +194,6 @@ bool StackTemplateBoolSpecialization<bool>::Pop()
 		int positionInRepr = topIndex / 8;
 		int positionInByte = topIndex % 8;
 
-		// find entry in byte
 		bool poppedEntry = Top();
 
 		//reset everything to the right of topIndex to 0
