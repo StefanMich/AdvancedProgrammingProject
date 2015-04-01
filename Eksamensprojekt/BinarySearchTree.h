@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Concepts.cpp"
 
+/// <summary>
+/// A binary search tree using concepts to check that the less than and output operators are defined on the type argument
+/// </summary>
 template<typename T>
 class BinarySearchTree
 {
@@ -30,12 +33,19 @@ private:
 	Node<T>* root;
 };
 
+/// <summary>
+/// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
+/// </summary>
+/// <param name="k">The k.</param>
 template<typename T>
 BinarySearchTree<T>::BinarySearchTree(T k)
 {
 	root = new Node<T>(k);
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="BinarySearchTree{T}"/> class.
+/// </summary>
 template<typename T>
 BinarySearchTree<T>::~BinarySearchTree()
 {
@@ -53,6 +63,11 @@ Node<T>* treeSearch(Node<T>* x, int k)
 	else return treeSearch(x->right, k);
 }
 
+/// <summary>
+/// Searches for k in the tree
+/// </summary>
+/// <param name="k">The k.</param>
+/// <returns>The node containing k, or nullptr if it does not exist in the tree</returns>
 template<typename T>
 Node<T>* BinarySearchTree<T>::Search(T k)
 {
@@ -60,6 +75,10 @@ Node<T>* BinarySearchTree<T>::Search(T k)
 }
 
 
+/// <summary>
+/// Inserts the specified k into the tree
+/// </summary>
+/// <param name="k">The k.</param>
 template<typename T>
 void BinarySearchTree<T>::Insert(T k)
 {
@@ -97,12 +116,20 @@ void inordertreewalk(Node<T>* x)
 	}
 }
 
+/// <summary>
+/// Performs an inorders tree walk on the tree, printing every value
+/// </summary>
 template<typename T>
 void BinarySearchTree<T>::InorderTreeWalk()
 {
 	inordertreewalk(root);
 }
 
+/// <summary>
+/// Adds k to the key of the root. 
+/// </summary>
+/// <param name="k">The k.</param>
+/// <returns></returns>
 template<typename T>
 T BinarySearchTree<T>::AddArbitrary(T k)
 {
