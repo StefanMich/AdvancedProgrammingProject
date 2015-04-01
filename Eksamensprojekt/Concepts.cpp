@@ -12,8 +12,11 @@ struct substitution_succeeded<substitution_failure>
 	: std::false_type
 {};
 
-
+//
 // less than concept
+//
+
+//boilerplate substitution failure code
 template<typename T>
 struct get_less_than_result;
 
@@ -22,6 +25,7 @@ struct has_less_than
 	: substitution_succeeded < typename get_less_than_result<T>::type >
 {};
 
+//using SFINAE to achieve concept
 template<typename T>
 struct get_less_than_result
 {
@@ -33,6 +37,7 @@ public:
 	using type = decltype(check(std::declval<T>()));
 };
 
+//The concept usable in a static assert
 template<typename T>
 constexpr bool Has_Less_Than()
 {
@@ -42,8 +47,11 @@ constexpr bool Has_Less_Than()
 
 
 
-
+//
 // output operator concept
+//
+
+//boilerplate substitution failure code
 template<typename T>
 struct get_output_result;
 
@@ -52,6 +60,7 @@ struct has_output
 	: substitution_succeeded < typename get_output_result<T>::type >
 {};
 
+//using SFINAE to achieve concept
 template<typename T>
 struct get_output_result
 {
@@ -63,6 +72,7 @@ public:
 	using type = decltype(check(std::declval<T>()));
 };
 
+//The concept usable in a static assert
 template<typename T>
 constexpr bool Has_Output()
 {

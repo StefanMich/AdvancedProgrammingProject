@@ -16,12 +16,18 @@ public:
 
 };
 
+/// <summary>
+/// Initializes a new instance of the <see cref="Node{T}"/> class.
+/// </summary>
 template<typename T>
 Node<T>::Node(T k)
 {
 	key = k;
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="Node{T}"/> class.
+/// </summary>
 template<typename T>
 Node<T>::~Node()
 {

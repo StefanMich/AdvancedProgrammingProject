@@ -1,6 +1,9 @@
 #pragma once
 #include <ostream>
 
+/// <summary>
+/// A simple class with an integer value. Implements less than and output
+/// </summary>
 class Data
 {
 public:

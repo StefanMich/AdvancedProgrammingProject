@@ -103,9 +103,9 @@ T StackTemplateBoolSpecialization<T>::Pop()
 
 
 
-
-// Complete bool specialization
-
+/// <summary>
+///  Complete bool specialization of the stack data structure
+/// </summary>
 template<>
 class StackTemplateBoolSpecialization < bool >
 {
@@ -124,6 +124,9 @@ private:
 	int topIndex;
 };
 
+/// <summary>
+/// Initializes a new instance of the <see cref="StackTemplateBoolSpecialization{bool}"/> class.
+/// </summary>
 StackTemplateBoolSpecialization<bool>::StackTemplateBoolSpecialization() : topIndex{ -1 }
 {
 	arr = new unsigned char[2];
@@ -131,11 +134,18 @@ StackTemplateBoolSpecialization<bool>::StackTemplateBoolSpecialization() : topIn
 	arr[1] = 0;
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="StackTemplateBoolSpecialization{bool}"/> class.
+/// </summary>
 StackTemplateBoolSpecialization<bool>::~StackTemplateBoolSpecialization()
 {
 	delete arr;
 }
 
+/// <summary>
+/// returns the top element of the stack without popping it
+/// </summary>
+/// <returns>The top element of the stack</returns>
 bool StackTemplateBoolSpecialization<bool>::Top()
 {
 	int positionInRepr = topIndex / 8;
@@ -148,6 +158,11 @@ bool StackTemplateBoolSpecialization<bool>::Top()
 	return poppedEntry;
 }
 
+
+/// <summary>
+/// Returns whether the stack is empty
+/// </summary>
+/// <returns>True if the stack is empty, false otherwise</returns>
 bool StackTemplateBoolSpecialization<bool>::StackEmpty()
 {
 	if (topIndex == -1)
@@ -155,6 +170,10 @@ bool StackTemplateBoolSpecialization<bool>::StackEmpty()
 	else return false;
 }
 
+/// <summary>
+/// Pushes the specified element to the stack.
+/// </summary>
+/// <param name="i">The element to push</param>
 void StackTemplateBoolSpecialization<bool>::Push(bool i)
 {
 	if (topIndex >= 16)
@@ -178,12 +197,12 @@ void StackTemplateBoolSpecialization<bool>::Push(bool i)
 	{
 		topIndex++;
 	}
-
-
-	//printArr(arr);
-	//std::cout << topIndex << std::endl;
 }
 
+/// <summary>
+/// Pops the top element from the stack
+/// </summary>
+/// <returns>The popped element</returns>
 bool StackTemplateBoolSpecialization<bool>::Pop()
 {
 	if (StackEmpty())
