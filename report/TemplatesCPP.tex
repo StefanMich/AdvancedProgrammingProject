@@ -19,6 +19,7 @@
 This report will describe my work on template programming in C++.
 The main focus will be a comparison with the experience I have with generics in C\#.
 A lot of the work in the report will be experiments with features that are not present in the C\# language and are therefore not known to me.
+There is no main program as such, but there are several methods in the \file{Eksamensprojekt.cpp} that explores the classes and templates that have been created.
 
 
 \section{Templates in C++}
@@ -118,6 +119,17 @@ bool StackTemplateBoolSpecialization<bool>::Top()
 Presented is a the \lstinline|Top()| method from the boolean stack specialization.
 As this is the boolean specialization of the stack the class name is qualified with \texttt{bool}. 
 The current top entry is found by shifting the bits first to the left, removing the bits of the rest of the stack and then 7 to the right for the boolean value to settle at the rightmost bit, making it possible to read the boolean value from it.
+
+A simple experiment shows that the normal stack implementation with space for 16 boolean take up 20 bytes of space, while the specialization only uses 8 bytes.
+This experiment can be found in the \lstinline|StackTemplateBoolSpecializationTest()| test method that can be found in the \file{Eksamensprojekt.cpp} file.
+
+Specialization is a feature in C++ template programming that makes it possible to make specialized implementations for certain arguments.
+It is possible to partially specialize for a subset of types, like pointers, and it is possible to fully specialize to a type like bool as has been demonstrated in the above. \cite[p.~730]{stroustrup2013c++}.
+
+Again this is a feature that C\# simply does not have. 
+In C\# generics you can provide one implementation, and that implementation will be used for every type parameter that will be provided.\cite{diff}
+
+\section{Concepts}
 
 
 \bibliography{bib}
