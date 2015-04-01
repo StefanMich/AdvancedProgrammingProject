@@ -24,6 +24,8 @@ public:
 
 	void InorderTreeWalk();
 
+	T AddArbitrary(T k);
+
 private:
 	Node<T>* root;
 };
@@ -66,7 +68,7 @@ void BinarySearchTree<T>::Insert(T k)
 	Node<T>* x = root;
 	Node<T>* y = nullptr;
 
-
+	
 
 	while (x != nullptr)
 	{
@@ -90,7 +92,7 @@ void inordertreewalk(Node<T>* x)
 {
 	if (x != nullptr){
 		inordertreewalk(x->left);
-		std::cout << x->key;
+		std::cout << x->key <<std::endl;
 		inordertreewalk(x->right);
 	}
 }
@@ -99,4 +101,10 @@ template<typename T>
 void BinarySearchTree<T>::InorderTreeWalk()
 {
 	inordertreewalk(root);
+}
+
+template<typename T>
+T BinarySearchTree<T>::AddArbitrary(T k)
+{
+	return root->key + k;
 }

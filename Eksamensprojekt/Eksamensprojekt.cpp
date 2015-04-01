@@ -17,7 +17,6 @@
 #include <iostream>
 
 
-
 using string = std::string;
 
 
@@ -121,6 +120,7 @@ void BSTConceptTest()
 
 	bstString.InorderTreeWalk();
 
+	
 	/*
 	//Custom datatype, does not have < and << implemented - does not compile
 	BinarySearchTree<DataIncompatible> bstIncompatible(DataIncompatible(1));
