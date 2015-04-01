@@ -12,7 +12,7 @@
 \usepackage{todonotes}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{natbib}
+\usepackage[square,numbers]{natbib}
 \usepackage{listings}
 
 \lstdefinestyle{standard}
@@ -30,13 +30,13 @@
 	captionpos=b,
 	escapeinside={(*}{*)},
 	breaklines=true,
-	tabsize=4,
+	tabsize=2,
 	language=C++,
 	basicstyle=\ttfamily,
 	keywordstyle=\color{blue}\ttfamily,
-	stringstyle=\color{red}\ttfamily,
 	commentstyle=\color{green}\ttfamily,
-	morecomment=[l][\color{magenta}]{\#}
+	morecomment=[l][\color{magenta}]{\#},
+	showstringspaces=false
 }
 \lstset{style=standard}
 \lstset{escapeinside={(*@}{@*)}}
